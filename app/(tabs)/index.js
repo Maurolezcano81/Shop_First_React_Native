@@ -1,11 +1,12 @@
 import { Link, Stack } from "expo-router";
 import { ActivityIndicator, FlatList, Image, ScrollView, StyleSheet, Text } from "react-native";
 import { View } from "react-native";
-import Screen from "../components/Screen";
+import Screen from "../../components/Screen";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useState, useEffect } from "react";
-import CardProducts from "../components/CardProducts";
-import Spinner from "../components/Spinner";
+import CardProducts from "../../components/CardProducts";
+import Spinner from "../../components/Spinner";
+import Toast from "react-native-toast-message";
 
 export default function Index() {
 
@@ -48,21 +49,26 @@ export default function Index() {
     return (
         <Screen>
 
+
             {isLoading ? (
                 <Spinner />
             )
                 : (
-                    <FlatList
-                        contentContainerStyle={styles.products__container}
-                        key={numColumns}
-                        data={products}
-                        renderItem={
-                            ({ item }) => <CardProducts product={item} />
 
-                        }
-                        keyExtractor={product => product.id}
-                        numColumns={numColumns}
-                    />
+                    <>
+                        <FlatList
+                            contentContainerStyle={styles.products__container}
+                            key={numColumns}
+                            data={products}
+                            renderItem={
+                                ({ item }) => <CardProducts product={item} />
+
+                            }
+                            keyExtractor={product => product.id}
+                            numColumns={numColumns}
+                        />
+                    </>
+
                 )
             }
         </Screen>

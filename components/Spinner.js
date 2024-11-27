@@ -11,7 +11,7 @@ export default function Spinner() {
             size={"large"}
             />
             <Text>
-                Cargando Productos...
+                Loading Products...
             </Text>
         </View>
     )

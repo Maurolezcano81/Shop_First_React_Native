@@ -1,6 +1,7 @@
 import { Image, Pressable, StyleSheet, Text, View } from "react-native"
 import { COLORS, FONT_SIZES, PADDING, SHADOWS } from "../utils/Constants"
 import { Link, router } from "expo-router"
+import AddToCart from "./AddToCart"
 
 export default function CardProducts({
     product
@@ -43,6 +44,16 @@ export default function CardProducts({
 
                 </View>
 
+                <View
+                    style={{ width: "100%" }}
+                >
+
+                    <AddToCart
+                        product={product}
+                        full={true}
+                    />
+
+                </View>
             </Pressable>
 
         </Link>

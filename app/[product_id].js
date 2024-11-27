@@ -1,4 +1,4 @@
-import { useLocalSearchParams, useNavigation } from "expo-router";
+import { useLocalSearchParams, useNavigation, useRouter } from "expo-router";
 import Screen from "../components/Screen";
 import { Image, Pressable, ScrollView, StyleSheet, Text } from "react-native";
 import { useEffect, useState } from "react";
@@ -10,6 +10,9 @@ import Spinner from "../components/Spinner";
 import { Colors } from "react-native/Libraries/NewAppScreen";
 import HeaderProduct from "../components/SingleProduct/HeaderProduct";
 import ProductsByCategorie from "../components/SingleProduct/ProductsByCategorie";
+import AddToCart from "../components/AddToCart";
+import { useLocaleContext } from "react-native-web";
+import { NavigationContainer, useNavigationState } from '@react-navigation/native';
 
 export default function DetailProduct() {
     const { product_id } = useLocalSearchParams();
@@ -21,6 +24,9 @@ export default function DetailProduct() {
     const [errorMessage, setErrorMessage] = useState("");
 
     const navigation = useNavigation();
+
+    const currentRouteName = useNavigationState((state) => state.routes[state.index].name);
+
 
     useEffect(() => {
 
@@ -45,7 +51,7 @@ export default function DetailProduct() {
             navigation.setOptions({
                 headerTitle: selectedProduct?.title || "Product Details",
                 headerLeft: () => null,
-                headerRight: () => <Cart />,
+                headerRight: () => null,
             });
 
         } catch (error) {
@@ -55,7 +61,7 @@ export default function DetailProduct() {
             return
         }
 
-    }, [selectedProduct.id])
+    }, [selectedProduct.id, currentRouteName])
 
 
     return (
@@ -89,16 +95,9 @@ export default function DetailProduct() {
                             </Text>
 
 
-                            <Pressable
-                                style={styles.cart__button}
-
-                            >
-                                <Text
-                                    style={styles.cart__button__text}
-                                >
-                                    + Add to Cart
-                                </Text>
-                            </Pressable>
+                            <AddToCart
+                                product={selectedProduct}
+                            />
 
                         </View>
 
@@ -109,7 +108,6 @@ export default function DetailProduct() {
                                 id={selectedProduct.id}
                             />
                         </View>
-
 
 
 
