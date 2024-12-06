@@ -1,10 +1,10 @@
 {
   "expo": {
-    "name": "mobileShop",
-    "slug": "mobileShop",
+    "name": "devShop",
+    "slug": "devShop",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/dShop.png",
+    "icon": "./assets/dShopIco.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "splash": {
@@ -12,21 +12,30 @@
       "resizeMode": "contain",
       "backgroundColor": "#6b21a8"
     },
-    "scheme": "mobileShop",
+    "scheme": ["devShop"],
     "ios": {
       "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/dShop.png",
+        "foregroundImage": "./assets/dShopIco.png",
         "backgroundColor": "#6b21a8"
-      }
+      },
+      "package": "com.maurolezcano81.devShop"
     },
     "web": {
-      "favicon": "./assets/dShop.png"
+      "favicon": "./assets/dShopIco.png"
     },
     "plugins": [
       "expo-router"
-    ]
+    ],
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "aaea9433-e182-4245-8d88-a77821cbd744"
+      }
+    }
   }
 }
